@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plataforma IMPACT - App do Colaborador</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- Ícones Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet"> <!-- Fonte Moderna -->
+</head>
+<body onload="initApp()"> <!-- Script onload para ativar aba inicial -->
+    <div class="app-container">
+        <!-- Sidebar Lateral -->
+        <div class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <h2>IMPACT</h2>
+            </div>
+            <ul class="sidebar-nav">
+                <li class="nav-item active" onclick="showTab('dashboard')"><i class="fas fa-home"></i> Início</li>
+                <li class="nav-item" onclick="showTab('metas')"><i class="fas fa-target"></i> Minhas Metas</li>
+                <li class="nav-item" onclick="showTab('desempenho')"><i class="fas fa-chart-line"></i> Pontuação</li>
+                <li class="nav-item" onclick="showTab('ranking-aba')"><i class="fas fa-trophy"></i> Ranking</li>
+                <li class="nav-item" onclick="showTab('premiacoes')"><i class="fas fa-gift"></i> Premiações</li>
+                <li class="nav-item" onclick="showTab('impacto')"><i class="fas fa-leaf"></i> Impacto</li>
+                <li class="nav-item" onclick="showTab('campanhas-especiais')"><i class="fas fa-bullhorn"></i> Campanhas</li>
+                <li class="nav-item" onclick="showTab('perfil')"><i class="fas fa-user"></i> Perfil</li>
+            </ul>
+        </div>
+
+        <!-- Overlay para fechar sidebar em mobile -->
+        <div class="overlay" id="overlay" onclick="toggleSidebar()"></div>
+
+        <!-- Conteúdo Principal -->
+        <div class="main-content">
+            <div class="header">
+                <button class="hamburger" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+                <h1>IMPACT</h1>
+            </div>
+
+            <!-- Tela Inicial (Dashboard) -->
+            <div class="content dashboard active">
+                <div class="saudacao">
+                    <i class="fas fa-sun"></i> Olá, João! Bem-vindo de volta.
+                </div>
+                <div class="resumo-metas card">
+                    <h3><i class="fas fa-list-check"></i> Metas Ativas do Mês</h3>
+                    <p>Reciclagem: 5/10 kg</p>
+                    <p>Transporte Sustentável: 3/5 dias</p>
+                </div>
+                <div class="pontuacao card">
+                    <div>
+                        <h4><i class="fas fa-star"></i> Pontuação Acumulada</h4>
+                        <p>1.250 pontos</p>
+                    </div>
+                    <div>
+                        <h4><i class="fas fa-level-up-alt"></i> Nível Atual</h4>
+                        <p>Nível 5 - Eco-Warrior</p>
+                    </div>
+                </div>
+                <div class="ranking card">
+                    <h3><i class="fas fa-medal"></i> Ranking Interno</h3>
+                    <p>Você está em 3º lugar!</p>
+                </div>
+                <div class="campanhas card">
+                    <h3><i class="fas fa-calendar-alt"></i> Destaques de Campanhas</h3>
+                    <p>Desafio Mobilidade Verde - Ativo até 15/10</p>
+                </div>
+            </div>
+
+            <!-- Aba Minhas Metas -->
+            <div class="content metas">
+                <h2><i class="fas fa-target"></i> Minhas Metas</h2>
+                <div class="meta-item card">
+                    <h3>Reciclagem</h3>
+                    <p>Descrição: Recicle 10kg de resíduos este mês.</p>
+                    <p>Prazo: Até 31/10</p>
+                    <p>Pontuação: 100 pontos</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 50%;"></div>
+                    </div>
+                    <button class="btn-modern" title="Envie fotos ou comprovantes"><i class="fas fa-upload"></i> Enviar Comprovação</button>
+                </div>
+                <div class="meta-item card">
+                    <h3>Transporte Sustentável</h3>
+                    <p>Descrição: Use transporte público ou bicicleta por 5 dias.</p>
+                    <p>Prazo: Até 31/10</p>
+                    <p>Pontuação: 50 pontos</p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 60%;"></div>
+                    </div>
+                    <button class="btn-modern" title="Check-in de localização"><i class="fas fa-map-marker-alt"></i> Enviar Comprovação</button>
+                </div>
+            </div>
+
+            <!-- Aba Pontuação e Desempenho -->
+            <div class="content desempenho">
+                <h2><i class="fas fa-chart-line"></i> Pontuação e Desempenho</h2>
+                <p>Pontos no mês: 1.250</p>
+                <p>Metas concluídas: 8</p>
+                <div class="medalhas">
+                    <div class="medalha" title="Medalha de Ouro"><i class="fas fa-trophy"></i></div>
+                    <div class="medalha" title="Medalha Sustentável"><i class="fas fa-leaf"></i></div>
+                    <div class="medalha" title="Medalha Mobilidade"><i class="fas fa-bicycle"></i></div>
+                </div>
+                <p>Comparação com equipe: Acima da média!</p>
+            </div>
+
+            <!-- Aba Ranking -->
+            <div class="content ranking-aba">
+                <h2><i class="fas fa-trophy"></i> Ranking</h2>
+                <div class="ranking-filters">
+                    <button class="btn-modern" onclick="filterRanking('all')">Todos</button>
+                    <button class="btn-modern" onclick="filterRanking('rh')">RH</button>
+                    <button class="btn-modern" onclick="filterRanking('ti')">TI</button>
+                </div>
+                <ul class="ranking-list" id="ranking-list">
+                    <li class="ranking-item top1"><i class="fas fa-crown"></i> 1. Maria (RH) - 1.500 pts</li>
+                    <li class="ranking-item top2"><i class="fas fa-medal"></i> 2. Pedro (TI) - 1.400 pts</li>
+                    <li class="ranking-item user"><i class="fas fa-user-circle"></i> 3. Você (TI) - 1.250 pts</li>
+                    <li class="ranking-item">4. Ana (RH) - 1.100 pts</li>
+                    <li class="ranking-item">5. João (TI) - 1.050 pts</li>
+                </ul>
+            </div>
+
+            <!-- Aba Premiações -->
+            <div class="content premiacoes">
+                <h2><i class="fas fa-gift"></i> Premiações</h2>
+                <div class="premio-item card">
+                    <div>
+                        <h3>Desconto em Loja Parceira</h3>
+                        <p>10% off em produtos sustentáveis</p>
+                        <p>Parceiro: EcoShop</p>
+                    </div>
+                    <button class="btn-modern" title="Resgatar com 200 pontos"><i class="fas fa-exchange-alt"></i> Resgatar (200 pts)</button>
+                </div>
+                <div class="premio-item card">
+                    <div>
+                        <h3>Curso Online</h3>
+                        <p>Sustentabilidade Empresarial</p>
+                        <p>Parceiro: IMPACT Academy</p>
+                    </div>
+                    <button class="btn-modern" title="Resgatar com 500 pontos"><i class="fas fa-graduation-cap"></i> Resgatar (500 pts)</button>
+                </div>
+            </div>
+
+            <!-- Aba Impacto Gerado -->
+            <div class="content impacto">
+                <h2><i class="fas fa-leaf"></i> Impacto Gerado</h2>
+                <div class="grafico card"><i class="fas fa-recycle"></i> Kg de resíduos reciclados: 50kg</div>
+                <div class="grafico card"><i class="fas fa-cloud"></i> CO₂ reduzido: 20kg</div>
+                <div class="grafico card"><i class="fas fa-clock"></i> Horas de voluntariado: 10h</div>
+            </div>
+
+            <!-- Aba Campanhas Especiais -->
+            <div class="content campanhas-especiais">
+                <h2><i class="fas fa-bullhorn"></i> Campanhas Especiais</h2>
+                <div class="campanha-item card">
+                    <h3>Desafio Mobilidade Verde</h3>
+                    <p>7 dias usando transporte sustentável</p>
+                    <p>Pontuação extra: 200 pts</p>
+                    <p>Patrocinador: BikeCorp</p>
+                    <p>Tempo restante: 3 dias</p>
+                </div>
+            </div>
+
+            <!-- Perfil -->
+            <div class="content perfil">
+                <h2><i class="fas fa-user"></i> Perfil</h2>
+                <div class="perfil-info">
+                    <img src="placeholder.jpg" alt="Foto" class="avatar">
+                    <div class="perfil-dados">
+                        <p><strong>Nome e Cargo:</strong> <span id="nome-cargo-display">João Silva - Analista</span></p>
+                        <input type="text" id="nome-cargo-edit" style="display: none;" placeholder="Ex: João Silva - Analista">
+                        <p><strong>Histórico:</strong> <span id="historico-display">20 metas concluídas</span></p>
+                        <textarea id="historico-edit" style="display: none;" placeholder="Ex: 20 metas concluídas"></textarea>
+                        <p><strong>Nível:</strong> <span id="nivel-display">5 - Eco-Warrior</span></p>
+                        <input type="text" id="nivel-edit" style="display: none;" placeholder="Ex: 5 - Eco-Warrior">
+                        <p><strong>Medalhas:</strong> <span id="medalhas-display">5</span></p>
+                        <input type="number" id="medalhas-edit" style="display: none;" placeholder="Ex: 5">
+                    </div>
+                    <div class="perfil-buttons">
+                        <button class="btn-modern" id="edit-btn" onclick="toggleEditMode()"><i class="fas fa-edit"></i> Editar</button>
+                        <button class="btn-modern" id="save-btn" style="display: none;" onclick="saveProfile()"><i class="fas fa-save"></i> Salvar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Inicializar app (ativa aba inicial)
+        function initApp() {
+            showTab('dashboard'); // Garante que a aba inicial seja exibida
+            loadProfile(); // Carrega dados do perfil do localStorage
+        }
+
+        // Toggle da sidebar
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
+        }
+
+        // Alternar abas com fade-in
+        function showTab(tabName) {
+            const contents = document.querySelectorAll('.content');
+            contents.forEach(content => {
+                content.classList.remove('active');
+                content.style.opacity = '0';
+            });
+            const activeTab = document.querySelector('.' + tabName);
+            activeTab.classList.add('active');
+            setTimeout(() => activeTab.style.opacity = '1', 100); // Animação suave
+            const navItems = document.querySelectorAll('.sidebar-nav .nav-item');
+            navItems.forEach(item => item.classList.remove('active'));
+            event.target.classList.add('active');
+            toggleSidebar(); // Fecha sidebar após seleção
+        }
+
+        // Filtro do ranking
+        function filterRanking(sector) {
+            const items = document.querySelectorAll('#ranking-list .ranking-item');
+            items.forEach(item => {
+                const text = item.textContent.toLowerCase();
+                if (sector === 'all' || text.includes(sector)) {
+                    item.style.display = 'flex';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        // Funções para edição do perfil
+        function toggleEditMode() {
+            const displays = document.querySelectorAll('#perfil .perfil-dados span');
+            const edits = document.querySelectorAll('#perfil .perfil-dados input, #perfil .perfil-dados textarea');
+            const editBtn = document.getElementById('edit-btn');
+            const saveBtn = document.getElementById('save-btn');
+
+            displays.forEach(display => display.style.display = 'none');
+            edits.forEach(edit => {
+                edit.style.display = 'block';
+                edit.value = edit.previousElementSibling.textContent; // Preenche com valor atual
+            });
+            editBtn.style.display = 'none';
+            saveBtn.style.display = 'inline-block';
+        }
+
+        function saveProfile() {
+            const displays = document.querySelectorAll('#perfil .perfil-dados span');
+            const edits = document.querySelectorAll('#perfil .perfil-dados input, #perfil .perfil-dados textarea');
+            const editBtn = document.getElementById('edit-btn');
+            const saveBtn = document.getElementById('save-btn');
+
+            edits.forEach(edit => {
+                const display = edit.previousElementSibling;
+                display.textContent = edit.value;
+                display.style.display = 'inline';
+                edit.style.display = 'none';
+                // Salva no localStorage
+                localStorage.setItem(edit.id.replace('-edit', ''), edit.value);
+            });
+            editBtn.style.display = 'inline-block';
+            saveBtn.style.display = 'none';
+        }
+
+        function loadProfile() {
+            // Carrega dados salvos do localStorage
+            const fields = ['nome-cargo', 'historico', 'nivel', 'medalhas'];
+            fields.forEach(field => {
+                const saved = localStorage.getItem(field);
+                if (saved) {
+                    document.getElementById(field + '-display').textContent = saved;
+                }
+            });
+        }
+    </script>
+</body>
+</html>
